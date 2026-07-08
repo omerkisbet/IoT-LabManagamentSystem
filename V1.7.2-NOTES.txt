@@ -1,0 +1,12 @@
+demo1 v1.7.2 compile fix
+
+Root cause:
+ClientIpResolver.java contained invalid Java string escaping after the GeoIP patch.
+
+Fixed:
+- quote detection
+- IPv4:port regular expression
+- IPv4 dot splitting
+- IPv4 segment regular expression
+
+Apply this patch over the project root and rebuild with Docker.

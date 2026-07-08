@@ -1,0 +1,27 @@
+demo1 v1.7 Localization Patch
+================================
+
+Implemented:
+- Automatic Turkish/English default language selection.
+- Turkey country headers select Turkish; other countries select English.
+- Browser language and Europe/Istanbul time zone are used as fallbacks.
+- Manual language selector with Auto, Turkish and English options.
+- Manual selection is stored in the browser.
+- Public pages and the admin panel are localized.
+- Dates, times, statuses, filters, form labels, buttons, feedback and
+  pagination labels use the active locale.
+- New public endpoint:
+  GET /api/localization/default-language
+- Docker image tag updated to:
+  omerut/demo1-app:v1.7
+
+Important:
+- Exact country-based detection requires a trusted reverse proxy or CDN
+  that supplies a country header, such as Cloudflare CF-IPCountry.
+- Database-authored content remains in the language in which it was entered.
+  Bilingual editorial content requires separate Turkish/English fields or
+  a translation service.
+- The real .env file is intentionally not included.
+
+Apply:
+Extract this archive directly over the project root and allow overwrite.

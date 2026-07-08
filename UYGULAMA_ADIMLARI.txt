@@ -1,0 +1,14 @@
+1. ZIP içeriğini C:\Users\utkuk\IdeaProjects\demo1 klasörüne çıkarın ve mevcut dosyaların üzerine yazın.
+2. Gerçek .env dosyanızı silmeyin veya değiştirmeyin.
+3. PowerShell'de proje klasöründe testleri çalıştırın:
+   .\mvnw.cmd test
+4. Uygulamayı yeni kodla yeniden oluşturup başlatın:
+   docker compose up --build -d
+5. Log kontrolü:
+   docker compose logs --tail=100 app
+6. Test adresleri:
+   - Ana sayfa: http://localhost:8080/
+   - Öğrenci profili: öğrenci kartı veya proje katkıcı fotoğrafına tıklayın.
+   - API: GET /api/students/{id}/profile
+7. Test tamamlanınca güncel image'ı Docker Hub'a gönderin:
+   docker push omerut/demo1-app:latest

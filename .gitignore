@@ -1,0 +1,31 @@
+# Maven
+target/
+*.class
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Visual Studio Code
+.vscode/
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Uploaded files
+uploads/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp

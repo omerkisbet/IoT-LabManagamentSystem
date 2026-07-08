@@ -1,0 +1,15 @@
+demo1 v1.7.1 – Self-hosted GeoIP localization
+
+This patch adds:
+- Visitor-country detection from the public client IP.
+- Local MaxMind GeoLite2 Country database lookup.
+- Optional official geoipupdate Docker profile.
+- Automatic database reload after download or update.
+- Safe TRUST_PROXY_HEADERS switch.
+- Existing country-header, Accept-Language and manual language fallbacks.
+
+The GeoLite2 database and MaxMind credentials are not included.
+Add MAXMIND_ACCOUNT_ID and MAXMIND_LICENSE_KEY to the real .env file.
+
+Start with:
+docker compose --profile geoip up --build -d

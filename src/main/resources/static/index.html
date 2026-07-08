@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa | OMÜ Sistem ve Ağ Araştırma Laboratuvarı</title>
+    <link rel="icon" type="image/png" href="/images/omu-logo.png">
+    <link rel="stylesheet" href="/css/site.css">
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/site.js" defer></script>
+</head>
+<body data-page="home">
+<header id="home">
+    <div class="header-container">
+        <div class="logo-title-wrapper">
+            <a href="/" aria-label="Ana sayfaya dön">
+                <img src="/images/omu-logo.png" alt="Ondokuz Mayıs Üniversitesi logosu" class="site-logo">
+            </a>
+            <div class="lab-title">
+                <h1>Sistem ve Ağ Araştırma Laboratuvarı</h1>
+                <h2>Ondokuz Mayıs Üniversitesi - Bilgisayar Mühendisliği</h2>
+            </div>
+        </div>
+        <nav aria-label="Ana navigasyon">
+            <ul class="nav-links">
+                <li><a href="/" class="active" aria-current="page">Ana Sayfa</a></li>
+<li><a href="/team.html">Ekibimiz</a></li>
+<li><a href="/projects.html">Projeler</a></li>
+<li><a href="/publications.html">Yayınlar</a></li>
+<li><a href="/news.html">Haberler</a></li>
+<li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main class="content-container">
+<section class="home-hero">
+    <div>
+        <h2>Araştırma, geliştirme, akademisyen ve öğrenci katkılarını tek noktada keşfedin.</h2>
+        <p>Sistem ve Ağ Araştırma Laboratuvarı ekibini, güncel projeleri, akademik yayınları ve laboratuvar duyurularını inceleyin.</p>
+    </div>
+    <div class="hero-statistics" aria-label="Laboratuvar içerik başlıkları">
+        <div class="hero-statistic"><strong>Ekip</strong><span>Akademisyen ve öğrenci katkıları</span></div>
+        <div class="hero-statistic"><strong>Proje</strong><span>Aktif çalışmalar</span></div>
+        <div class="hero-statistic"><strong>Yayın</strong><span>Akademik çıktılar</span></div>
+        <div class="hero-statistic"><strong>Haber</strong><span>Güncel gelişmeler</span></div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-heading-row"><h2 class="section-header">Ekibimizden Son Eklenenler</h2><a class="view-all-link" href="/team.html">Tüm Ekibi Gör →</a></div>
+    <div id="student-list" class="student-grid" data-preview-limit="3"><p class="status-message">Ekip üyeleri yükleniyor...</p></div>
+</section>
+
+<section class="content-section">
+    <div class="section-heading-row"><h2 class="section-header">Son Projeler</h2><a class="view-all-link" href="/projects.html">Tüm Projeleri Gör →</a></div>
+    <div id="project-list" class="project-grid" data-preview-limit="3"><p class="status-message">Projeler yükleniyor...</p></div>
+</section>
+
+<section class="content-section">
+    <div class="section-heading-row"><h2 class="section-header">Son Akademik Yayınlar</h2><a class="view-all-link" href="/publications.html">Tüm Yayınları Gör →</a></div>
+    <div id="publication-list" class="publication-list" data-preview-limit="3"><p class="status-message">Yayınlar yükleniyor...</p></div>
+</section>
+
+<section class="content-section">
+    <div class="section-heading-row"><h2 class="section-header">Son Haberler ve Duyurular</h2><a class="view-all-link" href="/news.html">Tüm Haberleri Gör →</a></div>
+    <div id="news-list" class="news-list" data-preview-limit="3"><p class="status-message">Haberler yükleniyor...</p></div>
+</section>
+<section id="contact" class="content-section">
+    <h2 class="section-header">İletişim</h2>
+    <div class="contact-layout">
+        <div class="contact-description">
+            <h3>Bizimle İletişime Geçin</h3>
+            <p>Laboratuvar projeleri, akademik çalışmalar, staj olanakları veya iş birlikleri hakkında bilgi almak için formu kullanabilirsiniz.</p>
+            <div class="contact-info-box">
+                <strong>Sistem ve Ağ Araştırma Laboratuvarı</strong>
+                <span>Ondokuz Mayıs Üniversitesi</span>
+                <span>Bilgisayar Mühendisliği Bölümü</span>
+            </div>
+        </div>
+        <form id="contact-form" class="contact-form">
+            <div class="form-group">
+                <label for="sender-name">Ad Soyad</label>
+                <input id="sender-name" name="senderName" type="text" maxlength="100" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+                <label for="sender-email">E-posta</label>
+                <input id="sender-email" name="email" type="email" maxlength="150" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message-subject">Konu</label>
+                <input id="message-subject" name="subject" type="text" maxlength="200" required>
+            </div>
+            <div class="form-group">
+                <label for="message-content">Mesaj</label>
+                <textarea id="message-content" name="message" rows="7" maxlength="5000" required></textarea>
+                <span class="character-information">En fazla 5000 karakter.</span>
+            </div>
+            <button id="contact-submit-button" class="contact-submit-button" type="submit">Mesaj Gönder</button>
+            <div id="contact-feedback" class="contact-feedback" role="status" aria-live="polite" hidden></div>
+        </form>
+    </div>
+</section>
+</main>
+<footer>
+    <p>Sistem ve Ağ Araştırma Laboratuvarı</p>
+    <p>Ondokuz Mayıs Üniversitesi - Bilgisayar Mühendisliği</p>
+</footer>
+</body>
+</html>

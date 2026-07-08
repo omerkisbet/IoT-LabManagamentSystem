@@ -1,0 +1,13 @@
+demo1 v1.8 patch
+
+Fixes:
+- Student and academician profile project cards use a stable responsive layout.
+- Project links and timestamps no longer overlap.
+- Long summaries, tags and mobile cards remain inside their boundaries.
+- Complete SMTP configuration automatically activates admin email replies,
+  even when an older .env still contains MAIL_ENABLED=false.
+- Fresh installations default MAIL_ENABLED to true.
+- SMTP errors now identify the missing settings more precisely.
+
+Apply this archive directly over the project root.
+The real .env file is intentionally not included.

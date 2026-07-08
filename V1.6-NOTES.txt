@@ -1,0 +1,13 @@
+demo1 v1.6 Patch
+
+Implemented:
+- Team members can be classified as STUDENT or ACADEMICIAN.
+- Admin panel supports member type selection and academic titles.
+- Academicians are listed before students in the team and contributor areas.
+- Project contributor avatars are separated into Academicians and Students.
+- Academicians have dedicated clickable profile pages.
+- Pagination card counts adapt to the available grid width.
+- Existing records without a member type continue to behave as STUDENT.
+
+Apply this archive directly over the project root directory.
+The real .env file is intentionally not included.

@@ -1,0 +1,9 @@
+demo1 v1.7.1 - Self-hosted country detection
+
+- Adds local GeoLite2 Country database lookup.
+- Cloudflare is optional, not required.
+- Adds safe proxy-header trust switch.
+- Adds an optional official MaxMind geoipupdate Docker profile.
+- Automatically reloads the database after it is downloaded or updated.
+- Preserves Accept-Language and manual language-selection fallbacks.
+- Does not include a MaxMind database, account ID or license key.

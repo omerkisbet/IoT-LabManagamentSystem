@@ -1,0 +1,16 @@
+demo1 v1.8
+
+Fixes:
+1. Student/academician profile project cards now use a stable responsive layout.
+2. Project links and timestamps are placed in a dedicated non-overlapping footer.
+3. Complete SMTP configuration automatically enables admin email replies even if an old .env contains MAIL_ENABLED=false.
+4. Fresh SMTP configurations default to MAIL_ENABLED=true.
+
+Important SMTP values:
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your-address@gmail.com
+MAIL_PASSWORD=your-16-character-app-password
+MAIL_FROM=your-address@gmail.com
+MAIL_SMTP_AUTH=true
+MAIL_STARTTLS=true

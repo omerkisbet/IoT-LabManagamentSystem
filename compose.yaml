@@ -1,0 +1,93 @@
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: demo1-mongodb
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:27018:27017"
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+
+    volumes:
+      - demo1_mongo_data:/data/db
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "--quiet",
+          "--username",
+          "${MONGO_ROOT_USERNAME}",
+          "--password",
+          "${MONGO_ROOT_PASSWORD}",
+          "--authenticationDatabase",
+          "admin",
+          "--eval",
+          "db.adminCommand({ ping: 1 }).ok"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  geoipupdate:
+    image: ghcr.io/maxmind/geoipupdate:v7.1.1
+    container_name: demo1-geoipupdate
+    restart: unless-stopped
+    profiles: ["geoip"]
+
+    environment:
+      GEOIPUPDATE_ACCOUNT_ID: ${MAXMIND_ACCOUNT_ID}
+      GEOIPUPDATE_LICENSE_KEY: ${MAXMIND_LICENSE_KEY}
+      GEOIPUPDATE_EDITION_IDS: GeoLite2-Country
+      GEOIPUPDATE_FREQUENCY: ${GEOIPUPDATE_FREQUENCY:-72}
+
+    volumes:
+      - demo1_geoip:/usr/share/GeoIP
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: omerut/demo1-app:v1.8
+    container_name: demo1-app
+    restart: unless-stopped
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      MONGODB_URI: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb:27017/demo1_db?authSource=admin
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      MAIL_ENABLED: ${MAIL_ENABLED:-true}
+      MAIL_HOST: ${MAIL_HOST:-smtp.gmail.com}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      MAIL_FROM: ${MAIL_FROM:-}
+      MAIL_SMTP_AUTH: ${MAIL_SMTP_AUTH:-true}
+      MAIL_STARTTLS: ${MAIL_STARTTLS:-true}
+      UPLOAD_DIR: /app/uploads
+      GEOIP_ENABLED: ${GEOIP_ENABLED:-true}
+      GEOIP_DATABASE_PATH: /app/geoip/GeoLite2-Country.mmdb
+      TRUST_PROXY_HEADERS: ${TRUST_PROXY_HEADERS:-false}
+      FORWARD_HEADERS_STRATEGY: ${FORWARD_HEADERS_STRATEGY:-none}
+      PORT: 8080
+
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+    volumes:
+      - demo1_uploads:/app/uploads
+      - demo1_geoip:/app/geoip:ro
+
+volumes:
+  demo1_mongo_data:
+  demo1_uploads:
+  demo1_geoip:
