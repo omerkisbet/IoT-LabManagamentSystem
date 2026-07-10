@@ -1,0 +1,11 @@
+Version 1.8.2
+
+- Replaced the home page hero statistic cards with a large
+  Ondokuz Mayıs University logo.
+- Added a responsive logo panel for desktop and mobile layouts.
+- Fixed Turkish-to-English translations for Activity and
+  Academic title labels.
+- Changed the home page Publication category label to Publications.
+- Fixed long hero-card titles overflowing into adjacent cards.
+- Improved responsive typography and spacing in the home hero area.
+- Preserved GeoIP-based automatic Turkish and English localization.

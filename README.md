@@ -569,7 +569,7 @@ The public interface uses separate pages instead of loading all collections on o
 
 The contact form is available at the bottom of every public page. Card timestamps are displayed in the lower-right corner.
 
-Current Docker image tag: `omerut/demo1-app:v1.8`.
+Current Docker image tag: `omerut/demo1-app:v1.8.1`.
 
 
 ## Admin Panel Email Reply

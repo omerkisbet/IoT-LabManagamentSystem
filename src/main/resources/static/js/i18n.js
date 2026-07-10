@@ -81,6 +81,7 @@
     "Çalışmaları ve Aktiviteleri": "Work and Activities",
     "Ekip üyesi katkı istatistikleri": "Team member contribution statistics",
     "Yayın / Makale": "Publication / Article",
+    "Aktivite": "Activity",
     "Toplam Katkı": "Total Contributions",
     "Projelerde ara...": "Search projects...",
     "Projelerde ara": "Search projects",
@@ -438,6 +439,9 @@
 
         match = text.match(/^Sicil \/ Personel No:\s*(.*)$/);
         if (match) return "Staff / Personnel ID: " + match[1];
+
+        match = text.match(/^Akademik unvan:\s*(.*)$/);
+        if (match) return "Academic title: " + match[1];
 
         match = text.match(/^İlişkili kayıt:\s*(.*)$/);
         if (match) return "Related record: " + match[1];

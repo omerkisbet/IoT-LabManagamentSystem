@@ -53,7 +53,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: omerut/demo1-app:v1.8
+    image: omerut/demo1-app:v1.8.2
     container_name: demo1-app
     restart: unless-stopped
 
