@@ -36,10 +36,8 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService(
             PasswordEncoder passwordEncoder,
-            @Value("${app.security.admin.username}")
-            String username,
-            @Value("${app.security.admin.password}")
-            String password
+            @Value("${app.security.admin.username}") String username,
+            @Value("${app.security.admin.password}") String password
     ) {
         UserDetails admin = User.builder()
                 .username(username)
@@ -58,8 +56,8 @@ public class SecurityConfig {
 
         http
                 /*
-                 * Şimdilik cookie/session kullanmayan
-                 * REST API geliştirdiğimiz için kapalı.
+                 * The application currently uses HTTP Basic authentication
+                 * and does not rely on cookie-based sessions.
                  */
                 .csrf(AbstractHttpConfigurer::disable)
 
@@ -72,54 +70,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
 
                         /*
-                         * Ana sayfa ve statik dosyalar
+                         * Public pages and static resources.
                          */
-                        .requestMatchers(
-                                "/",
-                                "/index.html",
-                                "/student.html",
-                                "/academic.html",
-                                "/news.html",
-                                "/publications.html",
-                                "/projects.html",
-                                "/team.html",
-                                "/favicon.ico",
-                                "/error",
-                                "/css/**",
-                                "/js/**",
-                                "/images/**"
-                        ).permitAll()
-
-                        /*
-                         * Swagger
-                         */
-                        .requestMatchers(
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html"
-                        ).hasRole("ADMIN")
-
-                        /*
-                         * Public GET endpoint'leri
-                         */
-                        .requestMatchers(
-                                HttpMethod.GET,
-                                "/api/students/**",
-                                "/api/activities/**",
-                                "/api/projects/**",
-                                "/api/publications/**",
-                                "/api/news/**",
-                                "/api/media/files/**",
-                                "/api/localization/**"
-                        ).permitAll()
-
-                        /*
-                         * İletişim formu public
-                         */
-                        .requestMatchers(
-                                HttpMethod.POST,
-                                "/api/contact-messages"
-                        ).permitAll()
                         .requestMatchers(
                                 "/",
                                 "/index.html",
@@ -138,7 +90,47 @@ public class SecurityConfig {
                         ).permitAll()
 
                         /*
-                         * Diğer bütün işlemler admin ister
+                         * Swagger documentation is restricted to admins.
+                         */
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).hasRole("ADMIN")
+
+                        /*
+                         * Dokku and Actuator health checks.
+                         */
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/actuator/health",
+                                "/actuator/health/**"
+                        ).permitAll()
+
+                        /*
+                         * Public read-only API endpoints.
+                         */
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/api/students/**",
+                                "/api/activities/**",
+                                "/api/projects/**",
+                                "/api/publications/**",
+                                "/api/news/**",
+                                "/api/media/files/**",
+                                "/api/localization/**"
+                        ).permitAll()
+
+                        /*
+                         * The public contact form can create messages.
+                         */
+                        .requestMatchers(
+                                HttpMethod.POST,
+                                "/api/contact-messages"
+                        ).permitAll()
+
+                        /*
+                         * Every other request requires the ADMIN role.
                          */
                         .anyRequest().hasRole("ADMIN")
                 )
@@ -146,7 +138,7 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults())
 
                 /*
-                 * 401 ve 403 cevaplarını standart JSON yapısına çevirir.
+                 * Return standardized JSON responses for 401 and 403 errors.
                  */
                 .exceptionHandling(exception -> exception
 
@@ -184,8 +176,7 @@ public class SecurityConfig {
             String path
     ) throws IOException {
 
-        Map<String, Object> responseBody =
-                new LinkedHashMap<>();
+        Map<String, Object> responseBody = new LinkedHashMap<>();
 
         responseBody.put(
                 "timestamp",
@@ -230,4 +221,4 @@ public class SecurityConfig {
                 responseBody
         );
     }
-}
+} 

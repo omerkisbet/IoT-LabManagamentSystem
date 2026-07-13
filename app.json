@@ -1,0 +1,16 @@
+{
+  "healthchecks": {
+    "web": [
+      {
+        "type": "startup",
+        "name": "spring-boot-health",
+        "description": "Checks whether the Spring Boot application is healthy",
+        "path": "/actuator/health",
+        "port": 8080,
+        "attempts": 12,
+        "timeout": 5,
+        "wait": 5
+      }
+    ]
+  }
+}
