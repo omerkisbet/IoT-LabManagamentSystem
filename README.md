@@ -10,7 +10,7 @@ Uygulama; laboratuvar ekibini, projeleri, akademik yayınları ve haberleri ziya
 
 ### Ziyaretçi tarafı
 
-- Laboratuvar akademisyenlerini ve öğrencilerini ekip türüne göre görüntüleme
+- Laboratuvar akademisyenlerini ve öğrencilerini ekip türüne göre görüntüleme ve izleme 
 - Projeleri ve kullanılan teknolojileri görüntüleme
 - Akademik yayınları görüntüleme
 - Haber ve duyuruları görüntüleme
